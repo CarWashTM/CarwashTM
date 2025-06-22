@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
+  <title>CarWashTM</title>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Carwash™️ - Lavaggio Auto a Domicilio</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     .service-card:hover .overlay {
@@ -19,7 +19,8 @@
   </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
-  <!-- Hero -->
+
+  <!-- Hero con sfondo -->
   <div class="relative h-[400px] bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1950&q=80');">
     <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
       <div class="text-center text-white">
@@ -35,6 +36,7 @@
     <h2 class="text-3xl font-bold mb-6">Servizi Offerti</h2>
     <p class="mb-8 text-gray-600">Siamo specializzati in lavaggi a domicilio per auto di ogni tipo. Usiamo prodotti professionali, strumenti specifici per ogni superficie e dedichiamo la massima attenzione a ogni dettaglio. Lavoriamo con passione, precisione e puntualità, direttamente a casa tua.</p>
     <div class="space-y-8">
+      <!-- Servizio 1 -->
       <div class="relative h-64 rounded-xl overflow-hidden shadow-lg service-card" style="background-image: url('https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1950&q=80'); background-size: cover; background-position: center;">
         <div class="absolute inset-0 flex items-center justify-center overlay text-center text-white px-4">
           <div>
@@ -43,7 +45,9 @@
           </div>
         </div>
       </div>
-      <div class="relative h-64 rounded-xl overflow-hidden shadow-lg service-card" style="background-image: url('https://images.unsplash.com/photo-1601333488981-869b47f122f3?auto=format&fit=crop&w=1950&q=80'); background-size: cover; background-position: center;">
+
+      <!-- Servizio 2 aggiornato -->
+      <div class="relative h-64 rounded-xl overflow-hidden shadow-lg service-card" style="background-image: url('https://images.unsplash.com/photo-1605559424843-8f4f122f93aa?auto=format&fit=crop&w=1950&q=80'); background-size: cover; background-position: center;">
         <div class="absolute inset-0 flex items-center justify-center overlay text-center text-white px-4">
           <div>
             <h3 class="text-2xl font-bold mb-2">Lavaggio Interno + Esterno - €50</h3>
@@ -51,6 +55,8 @@
           </div>
         </div>
       </div>
+
+      <!-- Servizio 3 -->
       <div class="relative h-64 rounded-xl overflow-hidden shadow-lg service-card" style="background-image: url('https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?auto=format&fit=crop&w=1950&q=80'); background-size: cover; background-position: center;">
         <div class="absolute inset-0 flex items-center justify-center overlay text-center text-white px-4">
           <div>
@@ -68,11 +74,11 @@
     <form action="https://formspree.io/f/mnnvgjay" method="POST" class="space-y-6">
       <div>
         <label for="name" class="block mb-2">Nome e Cognome</label>
-        <input type="text" id="name" name="name" required class="w-full p-3 border border-gray-300 rounded-lg" />
+        <input type="text" id="name" name="name" class="w-full p-3 border border-gray-300 rounded-lg" required />
       </div>
       <div>
         <label for="phone" class="block mb-2">Numero di Telefono</label>
-        <input type="tel" id="phone" name="phone" required class="w-full p-3 border border-gray-300 rounded-lg" />
+        <input type="tel" id="phone" name="phone" class="w-full p-3 border border-gray-300 rounded-lg" required />
       </div>
       <div>
         <label for="service" class="block mb-2">Servizio Richiesto</label>
@@ -88,28 +94,6 @@
       </div>
       <button type="submit" class="w-full bg-yellow-400 text-black font-bold py-3 rounded-lg hover:bg-yellow-300 transition">Prenota Ora</button>
     </form>
-
-    <!-- Script per messaggio conferma -->
-    <script>
-      window.addEventListener("DOMContentLoaded", function () {
-        const form = document.querySelector("form");
-        form.addEventListener("submit", async function (e) {
-          e.preventDefault();
-          const data = new FormData(form);
-          const response = await fetch(form.action, {
-            method: "POST",
-            body: data,
-            headers: { 'Accept': 'application/json' }
-          });
-          if (response.ok) {
-            alert("Prenotazione inviata con successo! Riceverai una conferma via email.");
-            form.reset();
-          } else {
-            alert("Errore durante l'invio. Riprova più tardi.");
-          }
-        });
-      });
-    </script>
   </section>
 
   <!-- Recensioni -->
@@ -137,5 +121,6 @@
   <footer class="py-6 bg-gray-800 text-white text-center">
     <p>© 2025 Carwash™️. Tutti i diritti riservati.</p>
   </footer>
+
 </body>
 </html>
