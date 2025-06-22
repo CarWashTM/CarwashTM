@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Carwash™️ - Lavaggio Auto a Domicilio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .service-card:hover .overlay {
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+    .service-card .overlay {
+      background-color: rgba(0, 0, 0, 0.4);
+      transition: background-color 0.3s ease;
+    }
+    .service-card:hover .overlay {
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+    label {
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <!-- Hero con sfondo -->
+  <div class="relative h-[400px] bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1950&q=80');">
+    <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+      <div class="text-center text-white">
+        <h1 class="text-5xl font-bold mb-4">Carwash™️</h1>
+        <p class="text-xl mb-6">Lavaggio auto a domicilio - Comodità, qualità e igiene</p>
+        <a href="tel:+393289326366" class="inline-block bg-yellow-400 text-black font-bold px-8 py-4 rounded-full shadow-lg hover:bg-yellow-300 transition">Chiama Ora</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Servizi -->
+  <section class="py-10 max-w-5xl mx-auto px-4">
+    <h2 class="text-3xl font-bold mb-6">Servizi Offerti</h2>
+    <p class="mb-8 text-gray-600">Siamo specializzati in lavaggi a domicilio per auto di ogni tipo. Usiamo prodotti professionali, strumenti specifici per ogni superficie e dedichiamo la massima attenzione a ogni dettaglio. Lavoriamo con passione, precisione e puntualità, direttamente a casa tua.</p>
+    <div class="space-y-8">
+      <div class="relative h-64 rounded-xl overflow-hidden shadow-lg service-card" style="background-image: url('https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1950&q=80'); background-size: cover; background-position: center;">
+        <div class="absolute inset-0 flex items-center justify-center overlay text-center text-white px-4">
+          <div>
+            <h3 class="text-2xl font-bold mb-2">Lavaggio Interno Base - €25</h3>
+            <p>Pulizia interna dell'abitacolo con attenzione a cruscotto, vetri e tappetini.</p>
+          </div>
+        </div>
+      </div>
+      <div class="relative h-64 rounded-xl overflow-hidden shadow-lg service-card" style="background-image: url('https://images.unsplash.com/photo-1518655048521-f130df041f66?auto=format&fit=crop&w=1950&q=80'); background-size: cover; background-position: center;">
+        <div class="absolute inset-0 flex items-center justify-center overlay text-center text-white px-4">
+          <div>
+            <h3 class="text-2xl font-bold mb-2">Lavaggio Interno + Esterno - €50</h3>
+            <p>Pulizia completa con detergenti specifici. Esterno solo con canna dell'acqua privata.</p>
+          </div>
+        </div>
+      </div>
+      <div class="relative h-64 rounded-xl overflow-hidden shadow-lg service-card" style="background-image: url('https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?auto=format&fit=crop&w=1950&q=80'); background-size: cover; background-position: center;">
+        <div class="absolute inset-0 flex items-center justify-center overlay text-center text-white px-4">
+          <div>
+            <h3 class="text-2xl font-bold mb-2">Lavaggio Dettagliato Interno - €80</h3>
+            <p>Sanificazione sedili, pulizia profonda, trattamenti antimacchia e profumazione a lunga durata.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Prenotazioni -->
+  <section class="py-10 bg-white max-w-3xl mx-auto px-4">
+    <h2 class="text-3xl font-bold mb-6 text-center">Prenota il Tuo Lavaggio</h2>
+    <form class="space-y-6">
+      <div>
+        <label for="name" class="block mb-2">Nome e Cognome</label>
+        <input type="text" id="name" name="name" class="w-full p-3 border border-gray-300 rounded-lg" required />
+      </div>
+      <div>
+        <label for="phone" class="block mb-2">Numero di Telefono</label>
+        <input type="tel" id="phone" name="phone" class="w-full p-3 border border-gray-300 rounded-lg" required />
+      </div>
+      <div>
+        <label for="service" class="block mb-2">Servizio Richiesto</label>
+        <select id="service" name="service" class="w-full p-3 border border-gray-300 rounded-lg">
+          <option>Lavaggio Interno Base</option>
+          <option>Lavaggio Interno + Esterno</option>
+          <option>Lavaggio Dettagliato Interno</option>
+        </select>
+      </div>
+      <div>
+        <label for="date" class="block mb-2">Data Preferita</label>
+        <input type="date" id="date" name="date" class="w-full p-3 border border-gray-300 rounded-lg" />
+      </div>
+      <button type="submit" class="w-full bg-yellow-400 text-black font-bold py-3 rounded-lg hover:bg-yellow-300 transition">Prenota Ora</button>
+    </form>
+  </section>
+
+  <!-- Recensioni -->
+  <section class="py-10 bg-gray-100">
+    <div class="max-w-5xl mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-6 text-center">Cosa Dicono i Nostri Clienti</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-lg shadow">
+          <p class="text-gray-700 mb-4">"Servizio fantastico! Puntuali e molto professionali. La mia auto non è mai stata così pulita!"</p>
+          <div class="text-sm font-bold text-gray-900">— Marco R.</div>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow">
+          <p class="text-gray-700 mb-4">"Comodissimo, sono venuti a casa mia e in un’ora l’auto era perfetta. Super consigliato."</p>
+          <div class="text-sm font-bold text-gray-900">— Elisa B.</div>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow">
+          <p class="text-gray-700 mb-4">"Ho provato il servizio dettagliato: incredibile! Interni come nuovi."</p>
+          <div class="text-sm font-bold text-gray-900">— Giovanni L.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-6 bg-gray-800 text-white text-center">
+    <p>© 2025 Carwash™️. Tutti i diritti riservati.</p>
+  </footer>
+</body>
+</html>
