@@ -1,7 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="it">
-<head><title>CarWashTM</title>
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Carwash™️ - Lavaggio Auto a Domicilio</title>
@@ -14,16 +13,13 @@
       background-color: rgba(0, 0, 0, 0.4);
       transition: background-color 0.3s ease;
     }
-    .service-card:hover .overlay {
-      background-color: rgba(0, 0, 0, 0.7);
-    }
     label {
       font-weight: 600;
     }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
-  <!-- Hero con sfondo -->
+  <!-- Hero -->
   <div class="relative h-[400px] bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1950&q=80');">
     <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
       <div class="text-center text-white">
@@ -47,7 +43,7 @@
           </div>
         </div>
       </div>
-      <div class="relative h-64 rounded-xl overflow-hidden shadow-lg service-card" style="background-image: url('https://images.unsplash.com/photo-1518655048521-f130df041f66?auto=format&fit=crop&w=1950&q=80'); background-size: cover; background-position: center;">
+      <div class="relative h-64 rounded-xl overflow-hidden shadow-lg service-card" style="background-image: url('https://images.unsplash.com/photo-1601333488981-869b47f122f3?auto=format&fit=crop&w=1950&q=80'); background-size: cover; background-position: center;">
         <div class="absolute inset-0 flex items-center justify-center overlay text-center text-white px-4">
           <div>
             <h3 class="text-2xl font-bold mb-2">Lavaggio Interno + Esterno - €50</h3>
@@ -69,14 +65,14 @@
   <!-- Prenotazioni -->
   <section class="py-10 bg-white max-w-3xl mx-auto px-4">
     <h2 class="text-3xl font-bold mb-6 text-center">Prenota il Tuo Lavaggio</h2>
-    <form class="space-y-6">
+    <form action="https://formspree.io/f/mnnvgjay" method="POST" class="space-y-6">
       <div>
         <label for="name" class="block mb-2">Nome e Cognome</label>
-        <input type="text" id="name" name="name" class="w-full p-3 border border-gray-300 rounded-lg" required />
+        <input type="text" id="name" name="name" required class="w-full p-3 border border-gray-300 rounded-lg" />
       </div>
       <div>
         <label for="phone" class="block mb-2">Numero di Telefono</label>
-        <input type="tel" id="phone" name="phone" class="w-full p-3 border border-gray-300 rounded-lg" required />
+        <input type="tel" id="phone" name="phone" required class="w-full p-3 border border-gray-300 rounded-lg" />
       </div>
       <div>
         <label for="service" class="block mb-2">Servizio Richiesto</label>
@@ -92,6 +88,28 @@
       </div>
       <button type="submit" class="w-full bg-yellow-400 text-black font-bold py-3 rounded-lg hover:bg-yellow-300 transition">Prenota Ora</button>
     </form>
+
+    <!-- Script per messaggio conferma -->
+    <script>
+      window.addEventListener("DOMContentLoaded", function () {
+        const form = document.querySelector("form");
+        form.addEventListener("submit", async function (e) {
+          e.preventDefault();
+          const data = new FormData(form);
+          const response = await fetch(form.action, {
+            method: "POST",
+            body: data,
+            headers: { 'Accept': 'application/json' }
+          });
+          if (response.ok) {
+            alert("Prenotazione inviata con successo! Riceverai una conferma via email.");
+            form.reset();
+          } else {
+            alert("Errore durante l'invio. Riprova più tardi.");
+          }
+        });
+      });
+    </script>
   </section>
 
   <!-- Recensioni -->
