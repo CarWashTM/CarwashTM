@@ -16,7 +16,7 @@
     .fade-in-up {
       opacity: 0;
       transform: translateY(20px);
-      animation: fadeInUp 2.5s ease-out forwards; /* animazione più lunga */
+      animation: fadeInUp 2.5s ease-out forwards;
     }
     .fade-in-up.delay-1 {
       animation-delay: 0.8s;
@@ -33,7 +33,7 @@
   </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
-  <!-- Hero con sfondo -->
+  <!-- Hero -->
   <div class="relative h-[400px] bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1950&q=80');">
     <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center fade-in-up">
       <div class="text-center text-white">
@@ -49,7 +49,7 @@
     <h2 class="text-3xl font-bold mb-6">Servizi Offerti</h2>
     <p class="mb-8 text-gray-600">Siamo specializzati in lavaggi a domicilio per auto di ogni tipo. Usiamo prodotti professionali, strumenti specifici per ogni superficie e dedichiamo la massima attenzione a ogni dettaglio. Lavoriamo con passione, precisione e puntualità, direttamente a casa tua.</p>
     <div class="space-y-8">
-      <div class="relative h-64 rounded-xl overflow-hidden shadow-lg service-card" style="background-image: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1950&q=80'); background-size: cover; background-position: center;">
+      <div class="relative h-64 rounded-xl overflow-hidden shadow-lg service-card" style="background-image: url('https://images.unsplash.com/photo-1618005198919-d3d4b4dc3b94?auto=format&fit=crop&w=1950&q=80'); background-size: cover; background-position: center;">
         <div class="absolute inset-0 flex items-center justify-center overlay text-center text-white px-4">
           <div>
             <h3 class="text-2xl font-bold mb-2">Lavaggio Interno Base - €25</h3>
@@ -57,7 +57,7 @@
           </div>
         </div>
       </div>
-      <div class="relative h-64 rounded-xl overflow-hidden shadow-lg service-card" style="background-image: url('https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=1950&q=80'); background-size: cover; background-position: center;">
+      <div class="relative h-64 rounded-xl overflow-hidden shadow-lg service-card" style="background-image: url('https://images.unsplash.com/photo-1605559424843-452b3a40186b?auto=format&fit=crop&w=1950&q=80'); background-size: cover; background-position: center;">
         <div class="absolute inset-0 flex items-center justify-center overlay text-center text-white px-4">
           <div>
             <h3 class="text-2xl font-bold mb-2">Lavaggio Interno + Esterno - €50</h3>
@@ -65,7 +65,7 @@
           </div>
         </div>
       </div>
-      <div class="relative h-64 rounded-xl overflow-hidden shadow-lg service-card" style="background-image: url('https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&w=1950&q=80'); background-size: cover; background-position: center;">
+      <div class="relative h-64 rounded-xl overflow-hidden shadow-lg service-card" style="background-image: url('https://images.unsplash.com/photo-1627627237819-e1a6ebeb313f?auto=format&fit=crop&w=1950&q=80'); background-size: cover; background-position: center;">
         <div class="absolute inset-0 flex items-center justify-center overlay text-center text-white px-4">
           <div>
             <h3 class="text-2xl font-bold mb-2">Lavaggio Dettagliato Interno - €80</h3>
@@ -81,65 +81,29 @@
   <section class="bg-gradient-to-br from-blue-100 via-blue-200 to-blue-300 py-12 border-t border-blue-400 my-10">
     <div class="max-w-5xl mx-auto px-6 md:px-8 lg:px-10">
       <h2 class="text-4xl font-bold mb-8 text-center text-blue-900 fade-in-up">Prenota Ora</h2>
-      <form
-        class="max-w-2xl mx-auto space-y-6 bg-white p-8 rounded-2xl shadow-2xl fade-in-up delay-1"
-        id="bookingForm"
-        action="https://formspree.io/f/mnnvgjay"
-        method="POST"
-      >
+      <form class="max-w-2xl mx-auto space-y-6 bg-white p-8 rounded-2xl shadow-2xl fade-in-up delay-1" action="https://formspree.io/f/mnnvgjay" method="POST">
         <div>
           <label for="name" class="block mb-1 text-blue-800">👤 Nome Completo</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            class="w-full rounded-lg border border-blue-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
-            placeholder="Es. Mario Rossi"
-            required
-          />
+          <input type="text" id="name" name="name" class="w-full rounded-lg border border-blue-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="Es. Mario Rossi" required>
         </div>
         <div>
           <label for="phone" class="block mb-1 text-blue-800">📞 Numero di Telefono</label>
-          <input
-            type="tel"
-            id="phone"
-            name="phone"
-            class="w-full rounded-lg border border-blue-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
-            placeholder="Es. 3281234567"
-            required
-          />
+          <input type="tel" id="phone" name="phone" class="w-full rounded-lg border border-blue-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="Es. 3281234567" required>
         </div>
         <div>
           <label for="vehicle" class="block mb-1 text-blue-800">🚗 Tipo di Veicolo</label>
-          <input
-            type="text"
-            id="vehicle"
-            name="vehicle"
-            class="w-full rounded-lg border border-blue-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
-            placeholder="Es. utilitaria, SUV, moto"
-            required
-          />
+          <input type="text" id="vehicle" name="vehicle" class="w-full rounded-lg border border-blue-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="Es. utilitaria, SUV, moto" required>
         </div>
         <div>
           <label for="service" class="block mb-1 text-blue-800">🧼 Tipo di Lavaggio</label>
-          <select
-            id="service"
-            name="service"
-            class="w-full rounded-lg border border-blue-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
-            required
-          >
+          <select id="service" name="service" class="w-full rounded-lg border border-blue-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-400" required>
             <option value="">Seleziona un trattamento</option>
             <option value="Interno Base - €25">Interno Base - €25</option>
             <option value="Interno + Esterno - €50">Interno + Esterno - €50</option>
             <option value="Dettagliato Interno - €80">Dettagliato Interno - €80</option>
           </select>
         </div>
-        <button
-          type="submit"
-          class="bg-yellow-400 text-black font-bold px-8 py-4 rounded-full hover:bg-yellow-300 transition w-full shadow-lg text-lg"
-        >
-          📩 Invia Prenotazione
-        </button>
+        <button type="submit" class="bg-yellow-400 text-black font-bold px-8 py-4 rounded-full hover:bg-yellow-300 transition w-full shadow-lg text-lg">📩 Invia Prenotazione</button>
       </form>
     </div>
   </section>
@@ -180,13 +144,14 @@
     </div>
   </section>
 
-  <!-- Contatti -->
+  <!-- Footer -->
   <footer class="bg-gray-800 text-white py-6 mt-10">
     <div class="max-w-5xl mx-auto px-4 text-center">
       <p>© 2025 Carwash™ - Tutti i diritti riservati</p>
       <p class="text-sm mt-2">Servizio attivo solo in zone con parcheggio privato e acqua disponibile per lavaggio esterno.</p>
-      <p class="text-sm mt-2">
-        Email: <a href="mailto:carwashtoscolanomaderno@gmail.com" class="underline">carwashtoscolanomaderno@gmail.com</a>
-      </p>
-      <p class="text-sm">
-        Telefono: <a href
+      <p class="text-sm mt-2">Email: <a href="mailto:carwashtoscolanomaderno@gmail.com" class="underline">carwashtoscolanomaderno@gmail.com</a></p>
+      <p class="text-sm">Telefono: <a href="tel:+393289326366" class="underline">+39 328 932 6366</a></p>
+    </div>
+  </footer>
+</body>
+</html>
