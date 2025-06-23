@@ -1,9 +1,17 @@
+import zipfile
+import os
+
+# Nome del file html
+filename = "index.html"
+
+# Contenuto completo del sito html aggiornato con prenotazioni a metà pagina e recensioni
+html_content = """
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <title>CarWashTM</title>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Carwash™ - Lavaggio Auto a Domicilio</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     .service-card:hover .overlay {
@@ -13,18 +21,20 @@
       background-color: rgba(0, 0, 0, 0.4);
       transition: background-color 0.3s ease;
     }
+    .service-card:hover .overlay {
+      background-color: rgba(0, 0, 0, 0.7);
+    }
     label {
       font-weight: 600;
     }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
-
   <!-- Hero con sfondo -->
   <div class="relative h-[400px] bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1950&q=80');">
     <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
       <div class="text-center text-white">
-        <h1 class="text-5xl font-bold mb-4">Carwash™️</h1>
+        <h1 class="text-5xl font-bold mb-4">Carwash™</h1>
         <p class="text-xl mb-6">Lavaggio auto a domicilio - Comodità, qualità e igiene</p>
         <a href="tel:+393289326366" class="inline-block bg-yellow-400 text-black font-bold px-8 py-4 rounded-full shadow-lg hover:bg-yellow-300 transition">Chiama Ora</a>
       </div>
@@ -36,7 +46,6 @@
     <h2 class="text-3xl font-bold mb-6">Servizi Offerti</h2>
     <p class="mb-8 text-gray-600">Siamo specializzati in lavaggi a domicilio per auto di ogni tipo. Usiamo prodotti professionali, strumenti specifici per ogni superficie e dedichiamo la massima attenzione a ogni dettaglio. Lavoriamo con passione, precisione e puntualità, direttamente a casa tua.</p>
     <div class="space-y-8">
-      <!-- Servizio 1 -->
       <div class="relative h-64 rounded-xl overflow-hidden shadow-lg service-card" style="background-image: url('https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1950&q=80'); background-size: cover; background-position: center;">
         <div class="absolute inset-0 flex items-center justify-center overlay text-center text-white px-4">
           <div>
@@ -45,9 +54,7 @@
           </div>
         </div>
       </div>
-
-      <!-- Servizio 2 aggiornato con SUV -->
-     style="background-image: url('https://images.unsplash.com/photo-1511910849309-8f9048e2a8b2?auto=format&fit=crop&w=800&q=80'); background-size: cover; background-position: center;"
+      <div class="relative h-64 rounded-xl overflow-hidden shadow-lg service-card" style="background-image: url('https://images.unsplash.com/photo-1518655048521-f130df041f66?auto=format&fit=crop&w=1950&q=80'); background-size: cover; background-position: center;">
         <div class="absolute inset-0 flex items-center justify-center overlay text-center text-white px-4">
           <div>
             <h3 class="text-2xl font-bold mb-2">Lavaggio Interno + Esterno - €50</h3>
@@ -55,8 +62,6 @@
           </div>
         </div>
       </div>
-
-      <!-- Servizio 3 -->
       <div class="relative h-64 rounded-xl overflow-hidden shadow-lg service-card" style="background-image: url('https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?auto=format&fit=crop&w=1950&q=80'); background-size: cover; background-position: center;">
         <div class="absolute inset-0 flex items-center justify-center overlay text-center text-white px-4">
           <div>
@@ -66,61 +71,110 @@
         </div>
       </div>
     </div>
+    <p class="mt-6 text-sm text-gray-600">* Il lavaggio esterno è disponibile solo se è presente un parcheggio privato con accesso all'acqua.</p>
   </section>
 
   <!-- Prenotazioni -->
-  <section class="py-10 bg-white max-w-3xl mx-auto px-4">
-    <h2 class="text-3xl font-bold mb-6 text-center">Prenota il Tuo Lavaggio</h2>
-    <form action="https://formspree.io/f/mnnvgjay" method="POST" class="space-y-6">
+  <section class="bg-blue-100 py-10 border-t max-w-5xl mx-auto px-4 my-10 rounded-lg shadow">
+    <h2 class="text-3xl font-bold mb-6 text-center">Prenota Ora</h2>
+    <form class="max-w-xl mx-auto space-y-6" id="bookingForm">
       <div>
-        <label for="name" class="block mb-2">Nome e Cognome</label>
-        <input type="text" id="name" name="name" class="w-full p-3 border border-gray-300 rounded-lg" required />
+        <label for="name" class="block mb-1">Nome Completo</label>
+        <input type="text" id="name" name="name" class="w-full rounded border border-gray-300 px-4 py-2" placeholder="Il tuo nome" required>
       </div>
       <div>
-        <label for="phone" class="block mb-2">Numero di Telefono</label>
-        <input type="tel" id="phone" name="phone" class="w-full p-3 border border-gray-300 rounded-lg" required />
+        <label for="phone" class="block mb-1">Numero di Telefono</label>
+        <input type="tel" id="phone" name="phone" class="w-full rounded border border-gray-300 px-4 py-2" placeholder="Es. 3281234567" required>
       </div>
       <div>
-        <label for="service" class="block mb-2">Servizio Richiesto</label>
-        <select id="service" name="service" class="w-full p-3 border border-gray-300 rounded-lg">
-          <option>Lavaggio Interno Base</option>
-          <option>Lavaggio Interno + Esterno</option>
-          <option>Lavaggio Dettagliato Interno</option>
+        <label for="vehicle" class="block mb-1">Tipo di Veicolo</label>
+        <input type="text" id="vehicle" name="vehicle" class="w-full rounded border border-gray-300 px-4 py-2" placeholder="Es. utilitaria, suv, moto" required>
+      </div>
+      <div>
+        <label for="service" class="block mb-1">Tipo di Lavaggio</label>
+        <select id="service" name="service" class="w-full rounded border border-gray-300 px-4 py-2" required>
+          <option value="">Seleziona un trattamento</option>
+          <option value="Interno Base - €25">Interno Base - €25</option>
+          <option value="Interno + Esterno - €50">Interno + Esterno - €50</option>
+          <option value="Dettagliato Interno - €80">Dettagliato Interno - €80</option>
         </select>
       </div>
-      <div>
-        <label for="date" class="block mb-2">Data Preferita</label>
-        <input type="date" id="date" name="date" class="w-full p-3 border border-gray-300 rounded-lg" />
-      </div>
-      <button type="submit" class="w-full bg-yellow-400 text-black font-bold py-3 rounded-lg hover:bg-yellow-300 transition">Prenota Ora</button>
+      <button type="submit" class="bg-yellow-400 text-black font-bold px-6 py-3 rounded-full hover:bg-yellow-300 transition w-full">Invia Prenotazione</button>
     </form>
   </section>
 
-  <!-- Recensioni -->
-  <section class="py-10 bg-gray-100">
+  <!-- Vantaggi -->
+  <section class="bg-blue-50 py-10 border-t">
     <div class="max-w-5xl mx-auto px-4">
-      <h2 class="text-3xl font-bold mb-6 text-center">Cosa Dicono i Nostri Clienti</h2>
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="bg-white p-6 rounded-lg shadow">
-          <p class="text-gray-700 mb-4">"Servizio fantastico! Puntuali e molto professionali. La mia auto non è mai stata così pulita!"</p>
-          <div class="text-sm font-bold text-gray-900">— Marco R.</div>
+      <h2 class="text-3xl font-bold mb-6">Perché scegliere Carwash™</h2>
+      <ul class="list-disc list-inside text-gray-700 space-y-2">
+        <li>Prodotti professionali ed ecologici</li>
+        <li>Servizio a domicilio in tutta la zona di Toscolano Maderno</li>
+        <li>Disponibilità anche nei weekend</li>
+        <li>Puntualità e massima attenzione ai dettagli</li>
+        <li>Sanificazione profonda dell’abitacolo</li>
+        <li>Assistenza e prenotazioni rapide via WhatsApp</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Testimonianze -->
+  <section class="bg-white py-10 border-t">
+    <div class="max-w-5xl mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-6">Cosa dicono i nostri clienti</h2>
+      <div class="grid md:grid-cols-3 gap-6 text-sm text-gray-700">
+        <div class="bg-gray-100 p-6 rounded-lg shadow">
+          <p>"Servizio comodissimo! Sono venuti direttamente sotto casa e l’auto sembrava uscita dal concessionario. Super consigliato!"</p>
+          <p class="mt-4 font-semibold">– Martina R.</p>
         </div>
-        <div class="bg-white p-6 rounded-lg shadow">
-          <p class="text-gray-700 mb-4">"Comodissimo, sono venuti a casa mia e in un’ora l’auto era perfetta. Super consigliato."</p>
-          <div class="text-sm font-bold text-gray-900">— Elisa B.</div>
+        <div class="bg-gray-100 p-6 rounded-lg shadow">
+          <p>"Puntuali, precisi e con una cura nei dettagli rara. Ho due bambini piccoli e l'interno è tornato impeccabile e profumato."</p>
+          <p class="mt-4 font-semibold">– Luca B.</p>
         </div>
-        <div class="bg-white p-6 rounded-lg shadow">
-          <p class="text-gray-700 mb-4">"Ho provato il servizio dettagliato: incredibile! Interni come nuovi."</p>
-          <div class="text-sm font-bold text-gray-900">— Giovanni L.</div>
+        <div class="bg-gray-100 p-6 rounded-lg shadow">
+          <p>"Ho fatto fare il trattamento completo: soldi ben spesi! Servizio professionale e personale molto educato."</p>
+          <p class="mt-4 font-semibold">– Giulia M.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="py-6 bg-gray-800 text-white text-center">
-    <p>© 2025 Carwash™️. Tutti i diritti riservati.</p>
+  <!-- Contatti -->
+  <footer class="bg-gray-800 text-white py-6 mt-10">
+    <div class="max-w-5xl mx-auto px-4 text-center">
+      <p>© 2025 Carwash™ - Tutti i diritti riservati</p>
+      <p class="text-sm mt-2">Servizio attivo solo in zone con parcheggio privato e acqua disponibile per lavaggio esterno.</p>
+      <p class="text-sm mt-2">Email: <a href="mailto:carwashtoscolanomaderno@gmail.com" class="underline">carwashtoscolanomaderno@gmail.com</a></p>
+      <p class="text-sm">Telefono: <a href="tel:+393289326366" class="underline">+39 328 932 6366</a></p>
+    </div>
   </footer>
 
+  <script>
+    // Esempio semplice di alert dopo invio form (puoi sostituire con invio a backend se serve)
+    document.getElementById('bookingForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Grazie per la prenotazione! Ti contatteremo presto.');
+      this.reset();
+    });
+  </script>
 </body>
 </html>
+"""
+
+# Creo la cartella temporanea
+folder = "/mnt/data/carwash_site"
+os.makedirs(folder, exist_ok=True)
+
+# Percorso del file html
+filepath = os.path.join(folder, filename)
+
+# Scrivo il file html
+with open(filepath, "w", encoding="utf-8") as f:
+    f.write(html_content)
+
+# Creo il file zip
+zip_path = "/mnt/data/carwash_site.zip"
+with zipfile.ZipFile(zip_path, "w") as zipf:
+    zipf.write(filepath, arcname=filename)
+
+zip_path
