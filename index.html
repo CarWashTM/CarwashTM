@@ -6,13 +6,6 @@
   <title>Carwash™ - Lavaggio Auto a Domicilio</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    .service-card:hover .overlay {
-      background-color: rgba(0, 0, 0, 0.7);
-    }
-    .service-card .overlay {
-      background-color: rgba(0, 0, 0, 0.4);
-      transition: background-color 0.3s ease;
-    }
     .fade-in-up {
       opacity: 0;
       transform: translateY(20px);
@@ -33,7 +26,8 @@
   </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
-  <!-- Hero con sfondo -->
+
+  <!-- Hero -->
   <div class="relative h-[400px] bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1950&q=80');">
     <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center fade-in-up">
       <div class="text-center text-white">
@@ -48,37 +42,33 @@
   <section class="py-10 max-w-5xl mx-auto px-4">
     <h2 class="text-3xl font-bold mb-6">Servizi Offerti</h2>
     <p class="mb-8 text-gray-600">Siamo specializzati in lavaggi a domicilio per auto di ogni tipo. Usiamo prodotti professionali, strumenti specifici per ogni superficie e dedichiamo la massima attenzione a ogni dettaglio. Lavoriamo con passione, precisione e puntualità, direttamente a casa tua.</p>
-    <div class="space-y-8">
-      <!-- Prima immagine -->
-      <div class="relative h-64 rounded-xl overflow-hidden shadow-lg service-card" style="background-image: url('https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1950&q=80'); background-size: cover; background-position: center;">
-        <div class="absolute inset-0 flex items-center justify-center overlay text-center text-white px-4">
-          <div>
-            <h3 class="text-2xl font-bold mb-2">Lavaggio Interno Base - €25</h3>
-            <p>Pulizia interna dell'abitacolo con attenzione a cruscotto, vetri e tappetini.</p>
-          </div>
-        </div>
+    
+    <div class="grid gap-6 md:grid-cols-2">
+      <!-- Interno Base -->
+      <div class="bg-white border border-gray-200 rounded-xl shadow-md p-6 text-center">
+        <h3 class="text-2xl font-bold mb-2 text-blue-800">Lavaggio Interno Base - €25</h3>
+        <p>Pulizia interna dell'abitacolo con attenzione a cruscotto, vetri e tappetini.</p>
       </div>
 
-      <!-- Seconda immagine: qui va la tua nuova immagine! -->
-      <div class="relative h-64 rounded-xl overflow-hidden shadow-lg service-card" style="background-image: url('carwash-yellow.jpg'); background-size: cover; background-position: center;">
-        <div class="absolute inset-0 flex items-center justify-center overlay text-center text-white px-4">
-          <div>
-            <h3 class="text-2xl font-bold mb-2">Lavaggio Interno + Esterno - €50</h3>
-            <p>Pulizia completa con detergenti specifici. Esterno solo con canna dell'acqua privata.</p>
-          </div>
-        </div>
+      <!-- Interno + Esterno -->
+      <div class="bg-white border border-gray-200 rounded-xl shadow-md p-6 text-center">
+        <h3 class="text-2xl font-bold mb-2 text-blue-800">Lavaggio Interno + Esterno - €50</h3>
+        <p>Pulizia completa con detergenti specifici. Esterno solo con canna dell'acqua privata.</p>
       </div>
 
-      <!-- Terza immagine (sostituita con macchina lucida) -->
-      <div class="relative h-64 rounded-xl overflow-hidden shadow-lg service-card" style="background-image: url('https://images.unsplash.com/photo-1621293954908-907b80cf4d75?auto=format&fit=crop&w=1950&q=80'); background-size: cover; background-position: center;">
-        <div class="absolute inset-0 flex items-center justify-center overlay text-center text-white px-4">
-          <div>
-            <h3 class="text-2xl font-bold mb-2">Lavaggio Dettagliato Interno - €80</h3>
-            <p>Sanificazione sedili, pulizia profonda, trattamenti antimacchia e profumazione a lunga durata.</p>
-          </div>
-        </div>
+      <!-- Dettagliato Interno -->
+      <div class="bg-white border border-gray-200 rounded-xl shadow-md p-6 text-center">
+        <h3 class="text-2xl font-bold mb-2 text-blue-800">Lavaggio Dettagliato Interno - €80</h3>
+        <p>Sanificazione sedili, pulizia profonda, trattamenti antimacchia e profumazione a lunga durata.</p>
+      </div>
+
+      <!-- Premium Completo -->
+      <div class="bg-white border border-gray-200 rounded-xl shadow-md p-6 text-center">
+        <h3 class="text-2xl font-bold mb-2 text-blue-800">Premium Completo - €130</h3>
+        <p>Lavaggio esterno completo, igienizzazione approfondita dell’abitacolo e pulizia dell’impianto di aria condizionata.</p>
       </div>
     </div>
+
     <p class="mt-6 text-sm text-gray-600">* Il lavaggio esterno è disponibile solo se è presente un parcheggio privato con accesso all'acqua.</p>
   </section>
 
@@ -106,6 +96,7 @@
             <option value="Interno Base - €25">Interno Base - €25</option>
             <option value="Interno + Esterno - €50">Interno + Esterno - €50</option>
             <option value="Dettagliato Interno - €80">Dettagliato Interno - €80</option>
+            <option value="Premium Completo - €130">Premium Completo - €130</option>
           </select>
         </div>
         <button type="submit" class="bg-yellow-400 text-black font-bold px-8 py-4 rounded-full hover:bg-yellow-300 transition w-full shadow-lg text-lg">📩 Invia Prenotazione</button>
@@ -149,7 +140,7 @@
     </div>
   </section>
 
-  <!-- Contatti -->
+  <!-- Footer -->
   <footer class="bg-gray-800 text-white py-6 mt-10">
     <div class="max-w-5xl mx-auto px-4 text-center">
       <p>© 2025 Carwash™ - Tutti i diritti riservati</p>
