@@ -33,47 +33,28 @@
       font-weight: 600;
     }
 
-    /* Sfondo bianco con linee curve rosse come decorazione */
+    /* Sfondo bianco pulito senza linee */
     #services-bg {
-      position: relative;
       background-color: #fff;
       padding: 3rem 1rem;
-      overflow: hidden;
       border-radius: 1rem;
       margin-bottom: 3rem;
-      border: 1px solid #e3342f20; /* bordino leggero rosso */
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 4px 10px rgb(0 0 0 / 0.05);
     }
 
-    #services-bg::before,
-    #services-bg::after {
-      content: "";
-      position: absolute;
-      border: 2px solid #e3342f60; /* rosso vivo ma trasparente */
-      border-radius: 50% / 30%;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    #services-bg::before {
-      width: 400px;
-      height: 200px;
-      top: -50px;
-      left: -150px;
-      transform: rotate(25deg);
-    }
-
-    #services-bg::after {
-      width: 500px;
-      height: 300px;
-      bottom: -100px;
-      right: -200px;
-      transform: rotate(-20deg);
-    }
-
-    /* Per far comparire le immagini sopra le linee */
+    /* Per far comparire le immagini sopra lo sfondo */
     .service-card {
       position: relative;
       z-index: 1;
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 6px 15px rgb(0 0 0 / 0.1);
+      height: 260px;
+      background-size: cover;
+      background-position: center;
     }
   </style>
 </head>
@@ -89,15 +70,15 @@
     </div>
   </div>
 
-  <!-- Servizi con sfondo bianco e linee rosse -->
-  <section id="services-bg" class="max-w-5xl mx-auto">
-    <h2 class="text-3xl font-bold mb-6 text-gray-900">Servizi Offerti</h2>
-    <p class="mb-8 text-gray-600 max-w-3xl">Siamo specializzati in lavaggi a domicilio per auto di ogni tipo. Usiamo prodotti professionali, strumenti specifici per ogni superficie e dedichiamo la massima attenzione a ogni dettaglio. Lavoriamo con passione, precisione e puntualità, direttamente a casa tua.</p>
+  <!-- Servizi con sfondo bianco pulito -->
+  <section id="services-bg">
+    <h2 class="text-3xl font-bold mb-6 text-gray-900 text-center">Servizi Offerti</h2>
+    <p class="mb-8 text-gray-600 max-w-3xl mx-auto text-center">Siamo specializzati in lavaggi a domicilio per auto di ogni tipo. Usiamo prodotti professionali, strumenti specifici per ogni superficie e dedichiamo la massima attenzione a ogni dettaglio. Lavoriamo con passione, precisione e puntualità, direttamente a casa tua.</p>
     <div class="space-y-8">
       <!-- Lavaggio Interno Base -->
-      <div class="relative h-64 rounded-xl overflow-hidden shadow-lg service-card" style="background-image: url('https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1950&q=80'); background-size: cover; background-position: center;">
-        <div class="absolute inset-0 flex items-center justify-center overlay text-center text-white px-4">
-          <div>
+      <div class="service-card" style="background-image: url('https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1950&q=80');">
+        <div class="overlay absolute inset-0 flex items-center justify-center text-white px-4 bg-black bg-opacity-40 transition">
+          <div class="text-center">
             <h3 class="text-2xl font-bold mb-2">Lavaggio Interno Base - €25</h3>
             <p>Pulizia interna dell'abitacolo con attenzione a cruscotto, vetri e tappetini.</p>
           </div>
@@ -105,9 +86,9 @@
       </div>
 
       <!-- Lavaggio Interno + Esterno -->
-      <div class="relative h-64 rounded-xl overflow-hidden shadow-lg service-card" style="background-image: url('https://images.unsplash.com/photo-1549924231-f129b911e442?auto=format&fit=crop&w=1950&q=80'); background-size: cover; background-position: center;">
-        <div class="absolute inset-0 flex items-center justify-center overlay text-center text-white px-4">
-          <div>
+      <div class="service-card" style="background-image: url('https://images.unsplash.com/photo-1511914265870-2a1e206d3b7e?auto=format&fit=crop&w=1950&q=80');">
+        <div class="overlay absolute inset-0 flex items-center justify-center text-white px-4 bg-black bg-opacity-40 transition">
+          <div class="text-center">
             <h3 class="text-2xl font-bold mb-2">Lavaggio Interno + Esterno - €50</h3>
             <p>Pulizia completa con detergenti specifici. Esterno solo con canna dell'acqua privata.</p>
           </div>
@@ -115,9 +96,9 @@
       </div>
 
       <!-- Lavaggio Dettagliato Interno -->
-      <div class="relative h-64 rounded-xl overflow-hidden shadow-lg service-card" style="background-image: url('https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1950&q=80'); background-size: cover; background-position: center;">
-        <div class="absolute inset-0 flex items-center justify-center overlay text-center text-white px-4">
-          <div>
+      <div class="service-card" style="background-image: url('https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1950&q=80');">
+        <div class="overlay absolute inset-0 flex items-center justify-center text-white px-4 bg-black bg-opacity-40 transition">
+          <div class="text-center">
             <h3 class="text-2xl font-bold mb-2">Lavaggio Dettagliato Interno - €80</h3>
             <p>Sanificazione sedili, pulizia profonda, trattamenti antimacchia e profumazione a lunga durata.</p>
           </div>
@@ -125,16 +106,16 @@
       </div>
 
       <!-- Servizio Detailing Completo -->
-      <div class="relative h-64 rounded-xl overflow-hidden shadow-lg service-card" style="background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1950&q=80'); background-size: cover; background-position: center;">
-        <div class="absolute inset-0 flex items-center justify-center overlay text-center text-white px-4">
-          <div>
+      <div class="service-card" style="background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1950&q=80');">
+        <div class="overlay absolute inset-0 flex items-center justify-center text-white px-4 bg-black bg-opacity-40 transition">
+          <div class="text-center">
             <h3 class="text-2xl font-bold mb-2">Detailing Completo - €120</h3>
             <p>Pulizia approfondita di tutta l’auto e trattamenti completi su ogni dettaglio.</p>
           </div>
         </div>
       </div>
     </div>
-    <p class="mt-6 text-sm text-gray-500 italic">* Il lavaggio esterno è disponibile solo se è presente un parcheggio privato con accesso all'acqua.</p>
+    <p class="mt-6 text-sm text-gray-500 italic text-center">* Il lavaggio esterno è disponibile solo se è presente un parcheggio privato con accesso all'acqua.</p>
   </section>
 
   <!-- Prenotazioni -->
