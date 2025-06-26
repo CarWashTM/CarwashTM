@@ -6,108 +6,71 @@
   <title>Carwash™ - Lavaggio Auto a Domicilio</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    /* Sfondo nero opaco con linee curve rosse dietro i servizi */
-    #services {
-      background-color: #121212;
-      position: relative;
-      overflow: hidden;
-      padding: 3rem 1.5rem 4rem;
-      border-radius: 1rem;
-      margin-bottom: 4rem;
+    /* Overlay effetto hover */
+    .service-card:hover .overlay {
+      background-color: rgba(0, 0, 0, 0.7);
     }
-    /* Linee curve rosse decorative */
-    #services::before,
-    #services::after {
+    .service-card .overlay {
+      background-color: rgba(0, 0, 0, 0.4);
+      transition: background-color 0.3s ease;
+    }
+    /* Animazione fade-in */
+    .fade-in-up {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 2.5s ease-out forwards;
+    }
+    .fade-in-up.delay-1 {
+      animation-delay: 0.8s;
+    }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    label {
+      font-weight: 600;
+    }
+
+    /* Sfondo nero opaco con linee rosse curve per la sezione servizi */
+    #services-bg {
+      position: relative;
+      background-color: #111; /* nero opaco */
+      padding: 3rem 1rem;
+      overflow: hidden;
+      border-radius: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    #services-bg::before,
+    #services-bg::after {
       content: "";
       position: absolute;
-      border: 2px solid transparent;
-      border-top: 2px solid #e3342f;
-      border-right: 2px solid #e3342f;
-      width: 250px;
-      height: 250px;
-      border-radius: 50%;
+      border: 2px solid #e3342f; /* rosso vivo */
+      border-radius: 50% / 30%;
       opacity: 0.3;
-      z-index: 0;
-      animation: slow-spin 30s linear infinite;
-    }
-    #services::before {
-      top: -100px;
-      left: -100px;
-    }
-    #services::after {
-      bottom: -100px;
-      right: -100px;
-      border-top: none;
-      border-left: 2px solid #e3342f;
-      border-bottom: 2px solid #e3342f;
-      animation-direction: reverse;
-    }
-
-    @keyframes slow-spin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
-    /* Box servizio */
-    .service-card {
-      position: relative;
-      background-color: #1a1a1a;
-      border-radius: 1rem;
-      padding: 2rem 1.5rem 5rem 1.5rem;
-      box-shadow: 0 8px 20px rgb(227 52 47 / 0.5);
-      color: #fbbf24; /* giallo */
-      overflow: hidden;
-      z-index: 1;
-      transition: box-shadow 0.3s ease;
-    }
-    .service-card:hover {
-      box-shadow: 0 12px 30px rgb(227 52 47 / 0.8);
-    }
-
-    /* Footer immagine auto dentro box, in basso */
-    .service-footer-image {
-      position: absolute;
-      bottom: 1rem;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      opacity: 0.85;
-      filter: drop-shadow(0 0 4px rgba(0,0,0,0.5));
-      user-select: none;
       pointer-events: none;
     }
 
-    /* Titoli e testi */
-    .service-card h4 {
-      font-weight: 700;
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
-      color: #fbbf24;
-    }
-    .service-card p {
-      margin-bottom: 1.5rem;
-      color: #d1d5db; /* grigio chiaro */
-    }
-    .service-card span.price {
-      font-weight: 700;
-      font-size: 1.25rem;
-      color: #fbbf24;
+    #services-bg::before {
+      width: 400px;
+      height: 200px;
+      top: -50px;
+      left: -150px;
+      transform: rotate(25deg);
     }
 
-    /* Titolo sezione */
-    #services > h3 {
-      text-align: center;
-      color: #fbbf24;
-      font-size: 2.25rem;
-      margin-bottom: 3rem;
-      z-index: 2;
-      position: relative;
+    #services-bg::after {
+      width: 500px;
+      height: 300px;
+      bottom: -100px;
+      right: -200px;
+      transform: rotate(-20deg);
     }
-
   </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
-
   <!-- Hero con sfondo -->
   <div class="relative h-[400px] bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1950&q=80');">
     <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center fade-in-up">
@@ -119,45 +82,52 @@
     </div>
   </div>
 
-  <!-- Servizi con sfondo nero e linee curve rosse -->
-  <section id="services" class="max-w-6xl mx-auto px-6">
-    <h3>I Nostri Servizi</h3>
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
-
-      <!-- Servizio 1 -->
-      <div class="service-card">
-        <h4>Lavaggio Interno Base</h4>
-        <p>Pulizia di cruscotto, vetri e tappetini</p>
-        <span class="price">€25</span>
-        <img src="https://cdn-icons-png.flaticon.com/512/743/743922.png" alt="Auto 1" class="service-footer-image" />
+  <!-- Servizi con sfondo nero opaco e linee rosse -->
+  <section id="services-bg" class="max-w-5xl mx-auto">
+    <h2 class="text-3xl font-bold mb-6 text-white">Servizi Offerti</h2>
+    <p class="mb-8 text-gray-300 max-w-3xl">Siamo specializzati in lavaggi a domicilio per auto di ogni tipo. Usiamo prodotti professionali, strumenti specifici per ogni superficie e dedichiamo la massima attenzione a ogni dettaglio. Lavoriamo con passione, precisione e puntualità, direttamente a casa tua.</p>
+    <div class="space-y-8">
+      <!-- Lavaggio Interno Base -->
+      <div class="relative h-64 rounded-xl overflow-hidden shadow-lg service-card" style="background-image: url('https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1950&q=80'); background-size: cover; background-position: center;">
+        <div class="absolute inset-0 flex items-center justify-center overlay text-center text-white px-4">
+          <div>
+            <h3 class="text-2xl font-bold mb-2">Lavaggio Interno Base - €25</h3>
+            <p>Pulizia interna dell'abitacolo con attenzione a cruscotto, vetri e tappetini.</p>
+          </div>
+        </div>
       </div>
 
-      <!-- Servizio 2 -->
-      <div class="service-card">
-        <h4>Lavaggio Interno + Esterno</h4>
-        <p>Pulizia completa con prodotti delicati</p>
-        <span class="price">€50</span>
-        <img src="https://cdn-icons-png.flaticon.com/512/743/743931.png" alt="Auto 2" class="service-footer-image" />
+      <!-- Lavaggio Interno + Esterno -->
+      <div class="relative h-64 rounded-xl overflow-hidden shadow-lg service-card" style="background-image: url('https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1950&q=80'); background-size: cover; background-position: center;">
+        <div class="absolute inset-0 flex items-center justify-center overlay text-center text-white px-4">
+          <div>
+            <h3 class="text-2xl font-bold mb-2">Lavaggio Interno + Esterno - €50</h3>
+            <p>Pulizia completa con detergenti specifici. Esterno solo con canna dell'acqua privata.</p>
+          </div>
+        </div>
       </div>
 
-      <!-- Servizio 3 -->
-      <div class="service-card">
-        <h4>Lavaggio Dettagliato Interno</h4>
-        <p>Sanificazione, rimozione macchie, profumazione</p>
-        <span class="price">€80</span>
-        <img src="https://cdn-icons-png.flaticon.com/512/743/743937.png" alt="Auto 3" class="service-footer-image" />
+      <!-- Lavaggio Dettagliato Interno -->
+      <div class="relative h-64 rounded-xl overflow-hidden shadow-lg service-card" style="background-image: url('https://images.unsplash.com/photo-1549924231-f129b911e442?auto=format&fit=crop&w=1950&q=80'); background-size: cover; background-position: center;">
+        <div class="absolute inset-0 flex items-center justify-center overlay text-center text-white px-4">
+          <div>
+            <h3 class="text-2xl font-bold mb-2">Lavaggio Dettagliato Interno - €80</h3>
+            <p>Sanificazione sedili, pulizia profonda, trattamenti antimacchia e profumazione a lunga durata.</p>
+          </div>
+        </div>
       </div>
 
-      <!-- Servizio 4 -->
-      <div class="service-card">
-        <h4>Servizio Completo</h4>
-        <p>Ogni dettaglio curato alla perfezione</p>
-        <span class="price">€120</span>
-        <img src="https://cdn-icons-png.flaticon.com/512/743/743933.png" alt="Auto 4" class="service-footer-image" />
+      <!-- Servizio Detailing Completo -->
+      <div class="relative h-64 rounded-xl overflow-hidden shadow-lg service-card" style="background-image: url('https://images.unsplash.com/photo-1504203709270-6e2b25c432d8?auto=format&fit=crop&w=1950&q=80'); background-size: cover; background-position: center;">
+        <div class="absolute inset-0 flex items-center justify-center overlay text-center text-white px-4">
+          <div>
+            <h3 class="text-2xl font-bold mb-2">Detailing Completo - €120</h3>
+            <p>Pulizia approfondita di tutta l’auto e trattamenti completi su ogni dettaglio.</p>
+          </div>
+        </div>
       </div>
-
     </div>
-    <p class="text-sm text-gray-400 mt-6 text-center italic relative z-10">* Lavaggio esterno disponibile solo con accesso ad acqua e parcheggio privato.</p>
+    <p class="mt-6 text-sm text-gray-400">* Il lavaggio esterno è disponibile solo se è presente un parcheggio privato con accesso all'acqua.</p>
   </section>
 
   <!-- Prenotazioni -->
@@ -184,7 +154,7 @@
             <option value="Interno Base - €25">Interno Base - €25</option>
             <option value="Interno + Esterno - €50">Interno + Esterno - €50</option>
             <option value="Dettagliato Interno - €80">Dettagliato Interno - €80</option>
-            <option value="Servizio Completo - €120">Servizio Completo - €120</option>
+            <option value="Detailing Completo - €120">Detailing Completo - €120</option>
           </select>
         </div>
         <button type="submit" class="bg-yellow-400 text-black font-bold px-8 py-4 rounded-full hover:bg-yellow-300 transition w-full shadow-lg text-lg">📩 Invia Prenotazione</button>
@@ -222,16 +192,20 @@
         </div>
         <div class="bg-gray-100 p-6 rounded-lg shadow">
           <p>"Ho fatto fare il trattamento completo: soldi ben spesi! Servizio professionale e personale molto educato."</p>
-          <p class="mt-4 font-semibold">– Elena M.</p>
+          <p class="mt-4 font-semibold">– Giulia M.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-gray-900 text-gray-300 py-8 text-center">
-    <p>© 2024 Carwash™ - Lavaggio Auto a Domicilio</p>
-    <p>Telefono: <a href="tel:+393289326366" class="text-yellow-400 hover:underline">+39 328 9326366</a> | Email: <a href="mailto:info@carwash.com" class="text-yellow-400 hover:underline">info@carwash.com</a></p>
+  <!-- Contatti -->
+  <footer class="bg-gray-800 text-white py-6 mt-10">
+    <div class="max-w-5xl mx-auto px-4 text-center">
+      <p>© 2025 Carwash™ - Tutti i diritti riservati</p>
+      <p class="text-sm mt-2">Servizio attivo solo in zone con parcheggio privato e acqua disponibile per lavaggio esterno.</p>
+      <p class="text-sm mt-2">Email: <a href="mailto:carwashtoscolanomaderno@gmail.com" class="underline">carwashtoscolanomaderno@gmail.com</a></p>
+      <p class="text-sm">Telefono: <a href="tel:+393289326366" class="underline">+39 328 932 6366</a></p>
+    </div>
   </footer>
 
 </body>
