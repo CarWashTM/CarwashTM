@@ -33,24 +33,25 @@
       font-weight: 600;
     }
 
-    /* Sfondo nero opaco con linee rosse curve per la sezione servizi */
+    /* Sfondo bianco con linee curve rosse come decorazione */
     #services-bg {
       position: relative;
-      background-color: #111; /* nero opaco */
+      background-color: #fff;
       padding: 3rem 1rem;
       overflow: hidden;
       border-radius: 1rem;
       margin-bottom: 3rem;
+      border: 1px solid #e3342f20; /* bordino leggero rosso */
     }
 
     #services-bg::before,
     #services-bg::after {
       content: "";
       position: absolute;
-      border: 2px solid #e3342f; /* rosso vivo */
+      border: 2px solid #e3342f60; /* rosso vivo ma trasparente */
       border-radius: 50% / 30%;
-      opacity: 0.3;
       pointer-events: none;
+      z-index: 0;
     }
 
     #services-bg::before {
@@ -68,6 +69,12 @@
       right: -200px;
       transform: rotate(-20deg);
     }
+
+    /* Per far comparire le immagini sopra le linee */
+    .service-card {
+      position: relative;
+      z-index: 1;
+    }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -82,10 +89,10 @@
     </div>
   </div>
 
-  <!-- Servizi con sfondo nero opaco e linee rosse -->
+  <!-- Servizi con sfondo bianco e linee rosse -->
   <section id="services-bg" class="max-w-5xl mx-auto">
-    <h2 class="text-3xl font-bold mb-6 text-white">Servizi Offerti</h2>
-    <p class="mb-8 text-gray-300 max-w-3xl">Siamo specializzati in lavaggi a domicilio per auto di ogni tipo. Usiamo prodotti professionali, strumenti specifici per ogni superficie e dedichiamo la massima attenzione a ogni dettaglio. Lavoriamo con passione, precisione e puntualità, direttamente a casa tua.</p>
+    <h2 class="text-3xl font-bold mb-6 text-gray-900">Servizi Offerti</h2>
+    <p class="mb-8 text-gray-600 max-w-3xl">Siamo specializzati in lavaggi a domicilio per auto di ogni tipo. Usiamo prodotti professionali, strumenti specifici per ogni superficie e dedichiamo la massima attenzione a ogni dettaglio. Lavoriamo con passione, precisione e puntualità, direttamente a casa tua.</p>
     <div class="space-y-8">
       <!-- Lavaggio Interno Base -->
       <div class="relative h-64 rounded-xl overflow-hidden shadow-lg service-card" style="background-image: url('https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1950&q=80'); background-size: cover; background-position: center;">
@@ -98,7 +105,7 @@
       </div>
 
       <!-- Lavaggio Interno + Esterno -->
-      <div class="relative h-64 rounded-xl overflow-hidden shadow-lg service-card" style="background-image: url('https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1950&q=80'); background-size: cover; background-position: center;">
+      <div class="relative h-64 rounded-xl overflow-hidden shadow-lg service-card" style="background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1950&q=80'); background-size: cover; background-position: center;">
         <div class="absolute inset-0 flex items-center justify-center overlay text-center text-white px-4">
           <div>
             <h3 class="text-2xl font-bold mb-2">Lavaggio Interno + Esterno - €50</h3>
@@ -108,7 +115,7 @@
       </div>
 
       <!-- Lavaggio Dettagliato Interno -->
-      <div class="relative h-64 rounded-xl overflow-hidden shadow-lg service-card" style="background-image: url('https://images.unsplash.com/photo-1549924231-f129b911e442?auto=format&fit=crop&w=1950&q=80'); background-size: cover; background-position: center;">
+      <div class="relative h-64 rounded-xl overflow-hidden shadow-lg service-card" style="background-image: url('https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1950&q=80'); background-size: cover; background-position: center;">
         <div class="absolute inset-0 flex items-center justify-center overlay text-center text-white px-4">
           <div>
             <h3 class="text-2xl font-bold mb-2">Lavaggio Dettagliato Interno - €80</h3>
@@ -118,7 +125,7 @@
       </div>
 
       <!-- Servizio Detailing Completo -->
-      <div class="relative h-64 rounded-xl overflow-hidden shadow-lg service-card" style="background-image: url('https://images.unsplash.com/photo-1504203709270-6e2b25c432d8?auto=format&fit=crop&w=1950&q=80'); background-size: cover; background-position: center;">
+      <div class="relative h-64 rounded-xl overflow-hidden shadow-lg service-card" style="background-image: url('https://images.unsplash.com/photo-1468071174046-657d9d351a40?auto=format&fit=crop&w=1950&q=80'); background-size: cover; background-position: center;">
         <div class="absolute inset-0 flex items-center justify-center overlay text-center text-white px-4">
           <div>
             <h3 class="text-2xl font-bold mb-2">Detailing Completo - €120</h3>
@@ -127,7 +134,7 @@
         </div>
       </div>
     </div>
-    <p class="mt-6 text-sm text-gray-400">* Il lavaggio esterno è disponibile solo se è presente un parcheggio privato con accesso all'acqua.</p>
+    <p class="mt-6 text-sm text-gray-500 italic">* Il lavaggio esterno è disponibile solo se è presente un parcheggio privato con accesso all'acqua.</p>
   </section>
 
   <!-- Prenotazioni -->
@@ -202,11 +209,4 @@
   <footer class="bg-gray-800 text-white py-6 mt-10">
     <div class="max-w-5xl mx-auto px-4 text-center">
       <p>© 2025 Carwash™ - Tutti i diritti riservati</p>
-      <p class="text-sm mt-2">Servizio attivo solo in zone con parcheggio privato e acqua disponibile per lavaggio esterno.</p>
-      <p class="text-sm mt-2">Email: <a href="mailto:carwashtoscolanomaderno@gmail.com" class="underline">carwashtoscolanomaderno@gmail.com</a></p>
-      <p class="text-sm">Telefono: <a href="tel:+393289326366" class="underline">+39 328 932 6366</a></p>
-    </div>
-  </footer>
-
-</body>
-</html>
+      <p class="
